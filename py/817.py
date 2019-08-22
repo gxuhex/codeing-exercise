@@ -1330,3 +1330,25 @@ for i in range(SIZE) :
 
 
 
+#定义棋盘的大小
+BOARD_SIZE = 15
+#定义一个二维列表来充当棋盘
+board = []
+def initBoard() :
+    #把每个元素赋为"+",用于在控制台画出棋盘
+    for i in range(BOARD_SIZE) :
+        rov = ["+"] * BOARD_SIZE
+        board.append(rov)
+#在控制台输出棋盘的方法
+def printBoard() :
+    #打印每个列表元素
+    for i in range(BOARD_SIZE) :
+        for j in range(BOARD_SIZE) :
+            #打印列表元素后不换行
+            print(board[i][j], end = "")
+        #每打印完一行元素后输出一个换行符
+        print()
+initBoard()
+printBoard()
+inputStr = input('')
+
