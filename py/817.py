@@ -647,7 +647,7 @@ order_endings = ('st', 'nd', 'rd')\
 #将会看到st\nd\rd\17个th\st\nd\rd\7个th\st
 print(order_endings)
 day = input("输入日期(1-31): ")
-#将支付串转成整数
+#将字符串转成整数
 day_int = int(day)
 print(day + order_endings[day_int - 1])
 
@@ -689,3 +689,644 @@ a_list = [2, 30, 'a', [5, 30], 30]
 print(a_list.count(30)) 
 #计算列表中[5, 30]出现的次数
 print(a_list.count([5, 30]))
+
+a_list = ['crazyit', 20, -2.4, (3, 4), 'fkit']
+#删除第3个元素
+del a_list[3]
+print(a_list)
+
+#删除第2个到第4个(不包含)元素
+del a_list[1: 4]
+print(a_list)
+
+b_list = list(range(1, 10))
+#删除第3个到倒数第2个元素(不含),间隔为2
+del b_list[2: -2: 2]
+print(b_list)
+
+#删除第3个到第5个(不包含)元素
+del b_list[2: 4]
+print(b_list)
+
+name = 'crazyit'
+print(name)
+
+#删除name变量
+del name
+
+c_list = [20, 'crazyit', 30, -4, 'crazyit', 3.4]
+#删除第一次找到的30
+c_list.remove(30)
+print(c_list)
+#删除第一次找到的'crazyit'
+c_list.remove('crazyit')
+print(c_list)
+
+c_list.clear()
+print(c_list)
+
+a_list = [2, 30, 'a', 'b', 'crazyit', 30]
+#定位元素30出现的位置
+print(a_list.index(30))
+#从索引2开始定位元素30出现的位置
+print(a_list.index(30, 2))
+#从索引2处到索引4处之间定位元素30的出现位置,找不到该元素
+#print(a_list.index(30, 2, 4))
+
+a_tuple = ('crazyit', 20, -1.2)
+#将元组转换成列表
+a_list = list(a_tuple)
+print(a_list)
+#使用range()函数创建区间(range)对象
+a_range = range(1, 5)
+print(a_range)
+#将区间转换成列表
+b_list = list(a_range)
+print(b_list)
+#创建区间指定步长
+c_list = list(range(4, 20, 3))
+print(c_list)
+
+a_list = list(range(1, 8))
+#将a_list列表元素反转
+a_list.reverse()
+print(a_list)
+
+a_list = [3, 4, -2, -30, 14, 9.3, 3.4]
+#对列表元素排序
+a_list.sort()
+print(a_list)
+b_list = ['Python', 'swift', 'Ruby', 'Go', 'Kotlin', 'Brlang']
+#对列表元素排序,默认按照字符串的字符编码大小比较
+b_list.sort()
+print(b_list)
+
+#指定key为len,指定len函数对集合元素生成比较的键
+#也就是按字符串的长度比较大小
+b_list.sort(key = len)
+print(b_list)
+
+#指定反向排序
+b_list.sort(key = len,reverse = True)
+print(b_list)
+
+#PY2.7的排序语法
+
+
+stack = []
+#向栈中"入栈"3个元素
+stack.append("fkit")
+stack.append("crazyit")
+stack.append("Charile")
+print(stack)
+#第一次出栈:最后入栈的元素被移出栈
+print(stack.pop())
+print(stack)
+#再次出栈
+print(stack.pop())
+print(stack)
+
+a_list = ['crazyit', 20, -1.2]
+#将列表元素转换成元组
+a_tuple = tuple(a_list)
+print(a_tuple)
+#将让range()函数创建区间(range)对象
+a_range = range(1, 5)
+print(a_range)
+#将区间转换成元组
+b_tuple = tuple(a_range)
+print(b_tuple)
+#创建区间时指定步长
+c_tuple = tuple(range(4, 20, 3))
+print(c_tuple)
+
+
+a_list = [2, 4, -3.4, 'crazyit', 23]
+#对第2个元素进行赋值
+a_list[2] = 'fkit'
+print(a_list)
+#对倒数第2个元素复赋值
+a_list[-2] = 9527
+print(a_list)
+
+b_list = list(range(1, 5))
+print(b_list)
+#将第2个到第4个(不含)元素赋值为新列表的元素
+b_list[1: 3] = ['a', 'b']
+print(b_list)
+
+#将第3个到第3个(不包含)元素赋值为新列表的元素,就是插入
+b_list[2: 2] = ['x', 'y']
+print(b_list)
+
+#将第3个到第6个(不包含)元素赋值为空列表,就是删除
+b_list[2: 5] = []
+print(b_list)
+
+c_list = list(range(1, 10))
+#指定step为2,被赋值的元素有4个,因此用于赋值的列表必须有4个元素
+c_list[2: 9: 2] = ['a', 'b', 'c', 'd']
+print(c_list)
+
+cars = {'BMW': 8.5, 'BENS': 8.3, 'AUDI': 7.9}
+print(cars)
+#清空所有的key-value对
+cars.clear()
+print(cars)
+
+scores = {'语文': 89, '数学': 92, '英语': 93}
+print(scores)
+#空的花括号代表空的dict
+empty_dict = {}
+print(empty_dict)
+#使用元组作为dict的key
+dict2 = {(20,30): 'good', 30: 'bad'}
+print(dict2)
+
+vegetables = [("celery", 1.58), ('brocoli', 1.29), ('lettuce', 2.19)]
+#创建包含3组key-value对的字典
+dict3 = dict(vegetables)
+print(dict3)
+cars = [['BMW', 8.5], ['BENS', 8.3], ['AUDI', 7.9]]
+#创建包含3组key-value对的字典
+dict4 = dict(cars)
+print(dict4)
+#创建空的字典
+dict5 = dict()
+print(dict5)
+#使用关键字参数来创建字典
+dict6 = dict(spinach = 1.39, cabbage =2.59)
+print(dict6)
+
+scores = {'语文': 89}
+#通过key访问value
+print(scores['语文'])
+#对不存在的key赋值,就是增加key-value对
+scores['数学'] = 93
+scores[92] = 5.7
+print(scores)
+#使用del删除key-value对
+del scores['语文']
+del scores['数学']
+print(scores)
+
+cars = {'BMW': 8.5, 'BENS': 4.3, 'AUDI': 7.9}
+#对存在的key-value对赋值,改变key-value对
+cars['BENS'] = 4.3
+cars['AUDI'] = 3.8
+print(cars)
+
+#判断cars是否包含名为'AUDI'的ke-value对
+print('AUDI' in cars)
+#判断cars是否包含名为'PORSCHE'的key
+print('PORSCHE' in cars)
+print('LANBORGHINI' in cars)
+
+#字符串模板中使用key
+temp = '书名是: %(name)s, 价格是: %(price)010.2f, 出版社是: %(publish)s'
+book = {'name': '疯狂python讲义', 'price': 88.9, 'publish': '电子社'}
+#使用字典为字符串模板中的key传入值
+print(temp % book)
+
+book = {'name': '疯狂python讲义', 'price': 78.9, 'publish': '电子社'}
+#使用电子社为字符串模板传入值
+print(temp % book)
+
+#使用列表创建包含2个key的字典
+a_dict = dict.fromkeys(['a', 'b'])
+print(a_dict)
+#使用元组创建包含2个key的字典
+b_dict =dict.fromkeys((13, 17))
+print(b_dict)
+#使用元组创建包含3个key的字典,指点默认的value
+c_dict = dict.fromkeys((13, 17), 'good')
+print(c_dict)
+
+cars = {'BMW': 8.5, 'BENS': 8.3, 'AUDI': 7.9}
+#获取'BMW'对应的value
+print(cars.get('BMW'))
+print(cars.get('PORSCHE'))
+#print(cars['PORSCHE'])
+
+cars = {'BMW': 8.5, 'BENS': 8.3, 'AUDI': 7.9}
+#获取字典所有的key-value对,返回一个dict_item对象
+ims = cars.items()
+print(type(ims))
+#将dict_items转换成列表
+print(list(ims))
+#访问第2个key-value对
+print(list(ims)[1])
+#获取所有的key,返回一个dict_keys对象
+kys = cars.keys()
+print(type(kys))
+#将dict_keys转换成列表
+print(list(kys))
+#访问第二个key
+print(list(kys)[1])
+#获取字典里的所有value,返回一个dict_value对象
+vals = cars.values()
+#dict_values转成列表
+print(type(vals))
+#访问第2个value
+print(list(vals)[1])
+
+cars = {'BMW': 8.5, 'BENS': 8.3, 'AUDI': 7.9}
+print(cars.pop('AUDI'))
+print(cars)
+
+cars = {'AUDI': 7.9, 'BENS': 8.3, 'BMW': 8.5}
+print(cars)
+#弹出字典底层存储的最后一个key-value对
+print(cars.popitem())
+print(cars)
+#将弹出项的key赋值给v
+k, v = cars.popitem()
+print(k, v)
+
+
+cars = {'BMW': 8.5, 'BENS': 8.3, 'AUDI': 7.9}
+#设置默认值, 该key在dict中不存在,新增key-value对
+print(cars.setdefault('porsche', 9.2))
+print(cars)
+#设置默认值,该key在dict中存在,不会修改dict内容
+print(cars.setdefault('BMW',3.4))
+print(cars)
+
+
+cars = {'BMW': 8.5, 'BENS': 8.3, 'AUDI': 7.9}
+cars.update({'BMW': 4.5, 'PORSCHE': 9.3})
+print(cars)
+
+#定义空字符串
+s = ""
+if s :
+    print('s不是空字符串')
+else :
+    print('s是空字符串')
+#定义空列表
+my_list = []
+if my_list :
+    print('my_list不是空列表')
+else :
+    print('my_list是空列表')
+#定义空字典
+my_dict = {}
+if my_dict :
+    print('my_list不是空字典')
+else :
+    print('my_dict是空字典')
+
+
+s_age = input("请输入您的年龄")
+age = int(s_age)
+if age > 20 :
+    #只有当age.20时,下面的整体缩进代码块才会执行
+    #整体缩进的语句是一个整体,一起执行或者一起不执行
+    print('年龄已经大于20岁了')
+    print("20岁以上的人应该学会承担责任...")
+
+
+age = 45
+if age > 60 :
+    print('老年人')
+elif age > 40 :
+    print('中年人')
+elif age >20 :
+    print('青年人')
+
+age = 45
+if age > 60 :
+    print('老年人')
+#在原本的if条件中增加了else的隐含条件
+if age > 40 and not (age > 60) :
+    print('中年人')
+#在原本的if条件中增加了else的隐含条件
+if age > 20 and not (age > 60) and not (age > 40 and not (age > 60)) :
+    print('青年人')
+
+
+s_age = input("请输入您的年龄: ")
+age = int(s_age)
+if age > 20 :
+    print("年龄已经大于20岁了")
+    print("20岁以上的人应该学会承担责任...")
+
+s = input("请输入一个整数: ")
+s = int(s)
+if s > 5 :
+    print('大于5')
+elif s < 5 :
+    #空语句 占位符
+    pass
+else :
+    print("等于5")
+
+msg = "Hello Chalie"
+    #print(msg)
+
+
+s_age = input("请输入您的年龄: ")
+age = int(s_age)
+assert 20 < age < 80
+print("您的年龄在20到80之间")
+
+for i in range(1, 5) :
+    i = 20
+    print("i: ", i)
+
+src_list = [12, 45, 3.4, 12, 'fkit', 45, 3.4, 'fkit', 45, 3.4]
+statistics = {}
+for ele in src_list :
+    #如果字典中包含ele代表的key
+    if ele in statistics :
+        #将ele元素代表出现次数加1
+        statistics[ele] += 1
+    #如果字典中不包含ele代表的key,说明该元素还未出现过
+    else :
+        #将ele元素出现次数设置为1
+        statistics[ele] = 1
+#遍历dict,打印出各元素出现的次数
+for ele ,count in statistics.items() :
+    print("%s的出现次数为: %d" %(ele, count))
+
+
+my_dict = {'语文': 89, '数学': 92, '英语': 80}
+#通过item()遍历所有的key-value对
+#通过item()方法返回的是元素是key-value对,因此需要声明两个变量
+for key, value in my_dict.items() :
+    print('key', key)
+    print('value', value)
+print('===================')
+#通过keys()方法遍历所有key
+for key in my_dict.keys() :
+    print('key', key)
+    #通过key获取value
+    print('value', my_dict[key])
+print('===================')
+#通过value()方法遍历所有value
+for value in my_dict.values() :
+    print('value', value)
+ 
+
+a_list = [330, 1.4, 50, 'fkit', -3.5]
+for ele in a_list :
+     print('元素', ele)
+else :
+    #访问循环计数器的值,依然等于最后一个元素的值
+    print('else块', ele)
+
+a_range = range(10)
+#对range执行for表达式
+a_list = [x * x for x in a_range]
+#a_list集合包含10个元素
+print(a_list)
+b_list = [x * x for x in a_range if x % 2 == 0]
+#a_list集合包含5个元素
+print(b_list)
+#使用for表达式创建生成器
+c_generator = (x * x for x in a_range if x % 2 == 0)
+#使用for循环迭代生成器
+for i in c_generator :
+    print(i, end = '\t')
+print()
+d_list = [(x, y) for x in range(5) for y in range(4)]
+#d_dict包含20个元素
+print(d_list)
+dd_list = []
+for x in range(5) :
+    for y in range(4) :
+        dd_list.append((x, y))
+print(dd_list)
+
+e_list = [[x, y, z] for x in range(5) for y in range(4) for z in range(6)] 
+#e_list列表包含120个元素
+print(e_list)
+
+src_a = [30, 12, 66, 34, 39, 78, 36, 57, 121]
+src_b = [3, 5, 7, 11]
+#只要y能整除x,就将其配对
+result = [(x, y) for x in src_b for y in src_a if y % x == 0]
+print(result)
+
+a_list = [330, 1.4, 50, 'fkit', -3.5]
+#遍历0到a_list的范围
+for i in range(0, len(a_list)) :
+    #根据索引访问列表元素
+    print('第%d个元素是%s' % (i, a_list[i]))
+
+
+src_list = [12, 45, 3.4, 13, 'a', 4, 56, 'crazyit', 109.5]
+my_sum = 0
+my_count = 0
+for ele in src_list :
+    #如果该元素是整数或浮点数
+    if isinstance(ele, int) or isinstance(ele, float) :
+        #累加该元素
+        my_sum += ele
+        #数值个数加1
+        my_count += 1
+print('总和: ', my_sum)
+print('平均数: ', my_sum / my_count)
+
+s_max = input("请输入阶乘数: ")
+mx = int(s_max)
+result = 1
+#使用for in 循环遍历范围
+for num in range (i, mx + 1) :
+    result *= num 
+print(result)
+
+a_tuple = ('crazyit', 'fkit', 'Charile')
+for ele in a_tuple :
+    print('当前元素是: ', ele)
+
+#外层循环
+for i in range(0, 5) :
+    j = 0
+    #内层循环
+    while j < 3 :
+        print("i的值为: %d, j的值为: %d" % (i, j))
+        j += 1
+
+
+def test() :
+    #外层循环
+    for i in range(10) :
+        for j in range(10) :
+            print("i的值为: %d, j的值为: %d" % (i, j))
+            if j == 1 :
+                return
+            print("return 后的语句")
+test()
+
+my_list = ['fkit', 'crazyit', 'Charile', 'fox', 'Emily']
+for s in sorted(my_list, key = len) :
+    print(s)
+
+
+count_i = 0
+while count_i < 5 :
+    print('count_i小于5: ', count_i)
+    count_i += 1
+else :
+    print('count_i大于或等于5: ', count_i)
+
+
+#循环的初始化条件
+count_i = 0 
+#当count小于10时,执行循环体
+while count_i < 10 :
+    print('count_i的值', count_i)
+    count_i += 1
+
+src_list = [12, 45, 34, 13, 100, 24, 56, 74, 109]
+a_list = [] #定义整处3的元素
+b_list = [] #定义保存除3余1的元素
+c_list = [] #定义保存除3余2的元素
+#只要src_list还有元素,继续执行循环体
+while len(src_list) > 0 :
+    #弹出src_list最后一个元素
+    ele = src_list.pop()
+    #如果ele % 2不等于0
+    if ele % 3 == 0 :
+        a_list.append(ele)
+    elif ele % 3 == 1 :
+        b_list.append(ele)
+    else :
+        c_list.append(ele) #添加元素
+print("整除3: ", a_list)
+print("除以3余1: ", b_list)
+print("除以3余2: ", c_list)
+
+count_i = 0
+while count_i < 5 :
+    print("count_i小于5: ", count_i)
+    count_i += 1
+print('count_i大于或等于5: ',count_i)
+
+
+#循环的初始化条件
+count_i = 0
+#当count_i小于10时,执行循环体
+while count_i < 10 :
+    print("count: ", count_i)
+    #迭代语句
+    count_i += 1
+print("循环结束!")
+
+'''
+
+#一下是一个死循环
+count_i2 = 0 
+while count_i2 < 10 :
+    print("不停执行的死循环: ", count_i2)
+    count_i2 -= 1
+print("永远无法跳出的循环体")
+
+'''
+
+
+a_tiple = ('fkit', 'crazyit', 'Charile')
+i = 0
+#只有i小于len(a_list),继续执行循环体
+while i < len(a_tuple) :
+    print(a_tuple[i]) #根据i来访问元组的元素
+    i += 1
+
+
+books = ['疯狂Kotlin讲义', '疯狂Swift讲义', '疯狂Python讲义']
+prices = [79, 69, 89]
+#使用zip()函数压缩两个列表,从而实现并行遍历
+for book, price in zip(books, prices) :
+    print('%s的价格是: %5.2f' % (book, price))
+
+
+#一个简单的for循环
+for i in range(0, 10) :
+    print("i的值是: ", i)
+    if i == 2 :
+        #执行该语句将结束循环
+        break
+else :
+    print('else块: ', i)
+
+
+exit_flag = False
+#外层循环
+for i in range(0, 5) :
+    #内层循环
+    for j in range(0, 3) :
+        print("i的值为: %d, j的值为: %d" % (i, j))
+        if j == 1 :
+            exit_flag =True
+            #跳出里程循环
+            break
+    #如果exit_flag为ture,跳出外层循环
+    if exit_flag :
+        break
+
+#一个简单的for循环
+for i in range(1, 10) :
+    print("i的值是: ", i)
+    if i == 2 :
+        #执行该语句结束循环
+        break
+
+#一个简单的循环
+for i in range(0, 3) :
+    print("i的值是: ", i)
+    if i == 1 :
+        #忽略本次循环的剩下 语句
+        continue
+    print("contimue后的输出语句")
+
+
+SIZE = 7
+array = [[0] * SIZE]
+#创建一个长度SIZE*SIZE的二维列表
+for i in range(SIZE - 1) :
+    array += [[0] * SIZE]
+#该orient代表线圈的方向
+#其中0代表向下, 1代表向右, 2代表向左, 3代表向上
+orient = 0
+#控制将1^SIZE * SIZE的数值填入二维列表中
+#其中j控制行索引, k控制列索引
+j = 0
+k = 0
+for i in range(1, SIZE * SIZE + 1) :
+    array[j][k] = i
+    #如果位于图4.2中1号转弯线上
+    if j + k == SIZE - 1 :
+        # j > k,位于左下角
+        if j > k :
+            orient = 1
+        #位于右上角
+        else :
+            orient = 2
+    #如果位于图5.22号转弯线上
+    elif (k == j) and (k >= SIZE/2) :
+        orient = 3
+    #如果位于图5.2的3号转弯线上
+    elif (j == k - 1) and (k <= SIZE/2) :
+        orient = 0
+    #根据方向来控制行索引\列索引的改变
+    #如果方向为向下的线圈
+    if orient == 0 :
+        j += 1
+    #如果方向为向右绕圈
+    elif orient == 1 :
+        k += 1
+    #如果方向为左绕圈
+    elif orient == 2 :
+        k -= 1
+    #如果方向为向上绕圈
+    elif orient == 3 :
+        j -= 1
+#采用遍历来输出上面的二维列表
+for i in range(SIZE) :
+    for j in range(SIZE) :
+        print('%02d' %array[i][j], end = '')
+    print("")
+
+
+
