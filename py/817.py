@@ -1219,7 +1219,7 @@ print("循环结束!")
 #一下是一个死循环
 count_i2 = 0 
 while count_i2 < 10 :
-    print("不停执行的死循环: ", count_i2)
+    print("不停执行的死循环-: ", count_i2)
     count_i2 -= 1
 print("永远无法跳出的循环体")
 
@@ -1280,6 +1280,8 @@ for i in range(0, 3) :
         continue
     print("contimue后的输出语句")
 
+'''
+小项目
 
 SIZE = 7
 array = [[0] * SIZE]
@@ -1350,5 +1352,39 @@ def printBoard() :
         print()
 initBoard()
 printBoard()
-inputStr = input('')
+inputStr = input("请输入坐标,应以x, y的格式: \n")
+while inputStr != None :
+    #将用户输入的字符串以(,)作为分隔符,分隔成2个字符串
+    x_str, y_str = inputStr.split(sep = ",")
+    #把对应的元素赋为"@'
+    board[int(y_str) - 1][int(x_str) - 1] = "@"
+    
+    电脑随机生成2个整数,作为电脑下棋的坐标,赋给board列表
+    还涉及 :
+    1 坐标的有效性,不能只是数字,不能超出棋盘范围
+    2 下的棋的点,不能重复下棋
+    3 每次下棋后,需要扫描谁赢了
+   
+    printBoard()
+    inputStr = input("请输入您下棋的坐标,应以x,y的格式: \n")
+
+'''
+# 04 4.6
+
+def my_max(x, y) :
+    '''
+    获取两个数值之间较大的函数.
+
+    my_max(x, y) 
+        返回两个参数之间较大的那个
+    '''
+
+    #定义一个变量z,该变量等于x,y中较大的值
+    z = x if x > y else y
+    #返回变量z的值
+    return z
+#使用help()函数查看my_max的帮助文档
+    help(my_max)
+    print(my_max.__doc__)
+
 
