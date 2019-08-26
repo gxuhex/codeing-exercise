@@ -164,6 +164,173 @@ print(globals()) #
 print(locals())
 #直接访问x全局变量
 print(x) #5
-#通过去哪聚变量的"变量数组"来访问x全局变量
+#通过全局变量的"变量数组"来访问x全局变量
 print(globals()['x'])  #5
-#通过
+#通过全局变量的'变量数组'对x全局变量赋值
+globals()['x'] = 39
+print(x)
+#在全局范围内使用local()函数对x全局变量赋值
+locals()['x'] = 99
+print(x)    #输出x
+
+
+#定义一个函数
+def grith(width, height) :
+    print("width =", width)
+    print("height =", height)
+    return 2 * (width + height)
+#传统调用函数的方式,根据位置传递参数
+print(grith(3.5, 4.8))
+#根据关键字参数来传入参数
+print(grith(width = 3.5, height = 4.8))
+#使用关键字参数时可以交换位置
+print(grith(height = 4.8, width = 3.5))
+#使用部分关键字参数, 部分使用位置参数
+print(grith(3.5, height = 4.8))
+
+#使用参数必须放置在关键字参数之前,下面的代码错误
+#print(grith(width = 3.5, 4.8))
+
+#下面定义了三个test()函数, 但函数的形参列表不同
+#系统可以区分他们,这被称为函数重载
+def test() :
+    print("无参数的test()函数")
+#该函数类型为(String):Unit
+def test(msg) :
+    print("重载的test()函数", msg)
+#该函数的类型为(Int) : String
+def test(msg) :
+    print("重载的test()函数%s,带返回值" % msg)
+    return "test"
+##调用test()时没有传入参数,因此系统调用上面参数的test函数
+#test()
+#调用带String参数的test()函数
+test('fkjava')
+#调用带Int类型的test()函数,该函数返回字符串
+rt = test(30)
+print(rt)
+
+#定义了支持参数收集的函数
+def test(a, *books) :
+    print(books)
+    #books被当成元组处理
+    for b in books :
+        print(b)
+    #输出正数变量a的值
+    print(a)
+#调用test()函数
+test(5, "疯狂ios讲义", "疯狂Android讲义")
+
+
+#定义了支持参数收集的函数
+def test(*books, num) :
+    print(books)
+    #books被当成元组处理
+    for b in books :
+        print(b)
+    print(num)
+#调用test()函数
+test("疯狂ios讲义", "疯狂Android讲义", num = 20)
+
+my_list = ["疯狂Swift讲义", "疯狂Python讲义"]
+#将列表的多个元素传给支持参数收集的参数
+test(my_list, num = 20)
+my_tuple = ("疯狂Switf讲义", "疯狂Python讲义")
+#将元组的多个元素传给支持参数收集的函数
+test(*my_tuple, num = 20)
+
+#定义了支持参数收集的函数
+def test(x, y, z = 3, *books, **scores) :
+    print(x, y, z)
+    print(books)
+    print(scores)
+test(1, 2, 3, "疯狂ios讲义","疯狂Android讲义",语文 = 89, 数学 = 94)
+test(1, 2, "疯狂ios讲义", "疯狂Android讲义",语文 = 89, 数学 = 94)
+test(1, 2, 语文 = 89, 数学 = 94)
+
+def test (name, message) :
+    print("用户是: ", name)
+    print("欢迎消息: ", message)
+my_list = ["孙悟空", "欢迎来到疯狂软件"]
+test(*my_list)
+
+def foo(name, *nums) :
+    print("name参数: ", name)
+    print("num参数: ", nums)
+my_tuple = (1, 2, 3)
+#使用逆向收集,将my_tuple元组的元素传给nums参数
+foo('fkit', *my_tuple)
+
+#使用逆向收集,将my_tuple元组的第一个元素传给nums参数
+foo('fkit', *my_tuple)
+
+#不使用逆向收集, my-tiple元组整体传给name参数,剩下的催产素传给named手册上
+foo(*my_tuple)
+
+#不使用逆向收集, my_tiple元组整体赋值给name参数
+foo(my_tuple)
+
+def bar(book, price, dest) :
+    print(book, "这本书的价格是: ",price)
+    print('描述信息', test)
+my_dict = {'price' : 89, 'book' : '疯狂Python讲义', 'desc' : '这就是一本破书' }
+
+
+#定义函数, 该函数会包含局部函数
+def get_math_func(type, nn) :
+    #定义一个计算平方的局部函数
+    def square(n) :
+        return n * n
+    #定义一个计算立方的局部函数
+    def cube(n) :
+        return n * n * n
+    #定义一个计算阶乘的局部函数
+    def factorial(n) :
+        result = 1
+        for index in range(2, n + 1) :
+            result *= index
+        return result
+    #调用局部函数
+    if type == "square" :
+        return square(nn)
+    elif type == "cube" :
+        return cube(nn)
+    else :
+        return factorial(nn)
+print(get_math_func("square", 3))
+print(get_math_func("cube", 3))
+print(get_math_func("", 3))
+
+def foo() :
+    # 局部变量name
+    name = 'Charile'
+    def bar() :
+        nonlocal name
+        #访问bar函数所在的name局部变量
+        print(name)
+        name = '孙悟空'
+    bar()
+foo()
+
+#nonlocal 的具体含义
+
+def foo() :
+    #局部变量name
+    name = 'Charile'
+    def bar() :
+        #访问bar函数所在的foo函数的name局部变量
+      # 
+        nonlocal name
+        print(name)
+        name = '孙悟空'
+    bar()
+foo()
+
+
+
+
+
+
+
+
+
