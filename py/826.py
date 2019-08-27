@@ -180,3 +180,131 @@ from types import MethodType
 p.intro = MethodType(intro_func, p)
 #第一个参数已经绑定,无需传入
 p.intro("生活在别处")
+
+class ReturnSelf :
+    def grow(self) :
+        if hasattr(self, 'age') :
+            self.age += 1
+        else :
+            self.age = 1
+        #return self返回调用该方法的对象
+        return self
+rs = ReturnSelf()
+#可以连续调用同一个方法
+rs.grow().grow().grow()
+print("rs的age属性值是:", rs.age)
+
+class InConstructor :
+    def __init__(self) :
+        #在构造方法里定义一个foo变量(局部变量)
+        foo = 0
+        #使用self代表该构造方法正在初始化的对象
+        #使用下面的代码会把该构造方法的对象的foo实例变量设为6
+        self.foo = 6
+#所有使用In创建的对象的foo实例变量都将被设为6
+print(InConstructor().foo)   #6
+
+
+class User:
+    def test(self) :
+        print('self参数: ', self)
+
+u = User()
+#以方法形式调用test()方法
+u.test()
+#将User对象的test方法赋值给test()方法.
+foo = u.test
+#把方法赋值给变量有什么用
+
+#通过foo变量(函数形式)调用test()方法
+foo()  
+
+#因为上面把对象的方法赋给了这个变量,所以这里可以使用这个方法是同一个
+
+'6.2'
+
+def auth(fn) :
+    def auth_fn(*args) :
+        #用一条语句模拟执行权限检查
+        print("------模拟执行权限检查------")
+        #回调要修饰的目标函数
+        fn(*args)
+    return auth_fn
+@auth
+def  test(a, b) :
+    print("执行test函数,参数a: %s ,参数b: %s" % (a, b))
+#调用test()函数,其实是调用装饰之后返回的auth_fn函数
+test(20, 16)
+
+
+class User :
+    def walk (self) :
+        print(self, '正在慢慢的走')
+#通过类调用这类实例方法
+#User.walk()
+u = User()
+#显示未方法的第一个参数绑定参数值
+User.walk(u)
+
+#显示为方法的第一个参数绑定fkit字符串参数值
+User.walk('fkit')
+
+#定义全局空间的foo函数
+def foo() :
+    print("全局空间的foo方法")
+#全局空间的bar变量
+bar = 20
+class Bird :
+    #定义Bird空间的foo函数
+    def foo() :
+        print("Bord空间的foo方法")
+        #定义Bird空间的bar变量
+    bar = 200
+foo()
+print(bar)
+#调用Bird空间的函数和变量
+Bird.foo()
+print(Bird.bar)
+
+class Bird :
+    #classmethod修饰的是类方法
+    @classmethod
+    def fly(cls) :
+        print('类方法fly: ', cls)
+    #staticmethod修饰的是静态方法
+    @staticmethod
+    def info(p) :
+        print('静态方法info : ', p)
+#调用类方法,Bird类会自动绑定到第一个参数
+Bird.fly()
+#调用静态方法,不会自动绑定,因此程序必须手动绑定第一个参数
+Bird.info('crazyit')
+#创建Bird对象
+b = Bird()
+#使用对象调用fly()类方法,其实依然还是使用类方法
+#因此第一个参数依旧被自动绑定到Bird类
+b.fly()
+#使用对象调用info()静态方法, 其实依然还是使用类调用
+#因此程序必须为第一个参数执行绑定
+b. info('fkit')
+
+def funA(fn) :
+    print('A')
+    fn()  #执行传入的fn参数
+    return 'fkit'
+
+'''
+下面的修饰效果相当于: funA(funB),
+funB将会替换(装饰)成该语句的返回值:
+由于funA()函数返回fkit,因此funB就是fkit
+'''
+@funA
+def funB():
+    print('B')
+print(funB)
+
+
+
+
+
+
