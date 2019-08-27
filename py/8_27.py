@@ -103,7 +103,7 @@ rect = Rectangle(4, 3)
 print(rect.size)
 #对rect的size属性赋值
 rect.size = 9, 7
-#访问rect的width,heght实例变量
+#访问rect0的width,heght实例变量
 print(rect.width)
 print(rect.height)
 #删除rect的size属性
@@ -114,8 +114,107 @@ print(rect.height)
 print(dir(Rectangle))
 
 
+class User :
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+    def getfullname(self) :
+        return self.first + ',' + self.last
+    def setfullname(self, fullname) :
+        first_last = fullname.rsplit(',') ;
+        self.first = first_last[0]
+        self.last = first_last[1]
+    #使用property()函数定义fullname属性,只传入2个参数
+    #该属性是一个读写属性, 但不能删除
+    fullname = property(getfullname, setfullname)
+u = User('悟空', '孙')
+#访问fullname属性
+print(u.fullname)
+#对fullname属性赋值
+u.fullname = '八戒,朱'
+print(u.first)
+print(u.last)
+
+class Cell :
+    #使用@property修饰方法,相当于为该属性设置getter方法
+    @property
+    def state(self) :
+        return self._state
+    # 为state属性设置setter方法
+    @state.setter
+    def state(self, value) :
+        if 'alive' in value.lower() :
+            self._state = 'alive'
+        else :
+            self._state = 'dead'
+        #为is_dead属性设置getter方法
+        #只有getter方法属性为只读属性
+    @property
+    def is_dead(self) :
+        return not self._state.lower() == 'alive'
+c = Cell()
+#修改state属性
+c.state = 'alive'
+#访问state属性
+print(c.state)
+#访问is_dead属性
+print(c.is_dead)
+
+class User :
+    def __hide() :
+        print('示范隐藏的hide方法')
+    def getname(self) :
+        return self.__name
+    def setname(self, name) :
+        if len(name) < 3 or len(name) > 8 :
+            raise ValueError('用户名长度必须在3~8之间')
+        self.__name = name
+    name = property(getname, setname)
+    def setage(self, age) :
+        if age < 18 or age > 70 :
+            raise('用户名年龄必须在18到70之间')
+        self.__age = age
+    def getage(self) :
+        return self.__age
+    age = property(getage, setage)
+#创建User对象
+u = User()
+#对name属性赋值,实际上调用setname()方法
+u.name = 'fkit'
+u.age = 25
+print(u.name)
+print(u.age)
+
+#尝试调用隐藏的__hide()方法
+#u.__hide()
+
+#调用隐藏的__hide()方法
+u._User__hide()
+#对隐藏的__name属性赋值
+u._User__name = 'fk'
+#访问User对象的name属性(实际上访问__name实例变量)
+print(u.name)
 
 
+class Fruit :
+    def info(self) :
+        print("我是一个水果!重%克" % self.weight)
+
+class Food :
+    def taste(self) :
+        print("不同食物的口感不同")
+
+#定义Apple类, 继承了Fruit和Food类
+class Apple(Fruit, Food) :
+    pass
+
+#创建Apple对象
+a = Apple()
+a.weight = 5.6
+#调用Apple对象的info()方法
+a.info()
+#调用Apple对象的taste()方法
+a.taste()
 
 
 
